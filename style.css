@@ -1,0 +1,367 @@
+/*Fonts*/
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+/*Reset default properties*/
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/*General style*/
+html {
+    font-size: 16px;
+    font-family: "Montserrat", "JetBrains Mono", "Nunito Bolds","Poppins", monospace, "Sans-serif";
+}
+
+/*Body*/
+body {
+    position: relative;
+    height: 2000px;
+    /* background: linear-gradient(180deg, 
+        #6bb1dd 0%, 
+        #427fb8 40%,   
+        #1c5180 100%   
+    ); */
+    background: linear-gradient(180deg, 
+        #4DA6FF 0%,
+        #2B5487 40%,
+        #192B49 100% 
+    );
+    background-repeat: no-repeat;
+}
+body.preload {
+    transition: none !important;
+}
+
+a {
+    all: unset;
+}
+
+.ray {
+    position: absolute;
+    left: 10vw;
+    top: -160px;
+    z-index: -10;
+    & > img {
+        width: 1200px;
+        height: 800px;
+    }
+}
+.waves {
+    position: absolute;
+    left: 5vw;
+    top: -120px;
+
+    opacity: 0.20;
+    z-index: -10;
+
+    & > img {
+        width: 1200px;
+        height: 800px;
+    }    
+}
+
+.navbar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    position: sticky;
+    top: 0;
+
+    z-index: 10;
+
+    height: 90px;
+
+    margin: 25px 20px;
+
+    background-color: #006296ff;  /* #4d7498 */
+    border-radius: 20px;
+    box-shadow: 4px 4px 4px #26496b;
+
+    transition: 
+        all 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+        background-color 1.2s cubic-bezier(0.25, 0.1, 0.25, 1);
+
+    .navbar__seal-logo {
+        display: flex;
+
+        fill: white;
+        
+        width: 110px;
+        height: 110px;
+
+        margin-left: 80px;
+        margin-top: -21px;
+
+        cursor: pointer;
+    }
+
+    .navbar__link-menu {
+        display: flex;
+        flex-direction: row;
+        column-gap: 20px;
+
+        margin-left: 40px;
+        
+        .navbar__link-box {
+            cursor: pointer;
+
+            .navbar__link {
+                color: white;
+
+                font-size: 1.10em;
+            }
+                .navbar__link:hover {
+                    text-decoration: underline;
+                }
+        }
+    }
+
+    .navbar__github-logo {
+        display: flex;
+
+
+        position: absolute;
+        right: 50px;
+
+        width: 35px;
+        height: 35px;
+
+        cursor: pointer;
+
+        .navbar__github-svg {
+            width: 35px;
+            height: 35px;
+        }
+    }
+
+}
+.navbar.scrolled {
+    margin: 0;
+    border-radius: 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+.navbar.colored {
+    background-color: #003f61ff; /*3e5c7a*/
+}    
+main {
+    display: flex;
+    flex-direction: column;
+
+    margin: 130px 120px;
+
+    .info-section {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        column-gap: 200px;
+
+        position: relative;
+
+        .info-text {
+            display: flex;
+            flex-direction: column;
+            row-gap: 10px;
+
+            position: absolute;
+            top: 0;
+            left: 0;
+
+            width: 600px;
+
+            color: white;
+
+            opacity: 0.7;
+
+            h1 {
+                font-size: 65px !important;
+            }
+
+            .main-buttons {
+                display: flex;
+                flex-direction: row;
+                column-gap: 20px;
+                align-items: center;
+
+                margin-top: 20px;
+                
+                .download-btn {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    width: 200px;
+                    height: 60px;
+
+                    border: none;
+                    border-radius: 5px;
+
+                    background-color: #00dafd;
+                    
+                    font-weight: 550;
+                    font-size: 19px;
+
+                    cursor: pointer;
+                }
+                .view-btn {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    width: 200px;
+                    height: 60px;
+
+                    border-radius: 5px;
+                    border: 3px solid #8dbbe0;
+
+                    background-color: transparent;
+                    color: #8dbbe0;
+
+                    font-weight: 550;
+                    font-size: 19px;
+                    
+                    cursor: pointer;
+                }
+            }
+        }
+        .code-wrapper {
+            display: flex;
+            align-items: center;
+
+            position: absolute;
+            right: 0;
+            top: 0;
+            
+            background: rgba(8, 15, 30, 0.85);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 24px;
+
+            backdrop-filter: blur(10px);
+            box-shadow:
+                0 10px 40px rgba(0,0,0,0.35),
+                inset 0 1px 0 rgba(255,255,255,0.05);
+            transition: 0.35s ease;
+
+            user-select: none;
+
+            pre {
+                width: 100%;
+                margin: 0;
+                padding: 20px 35px 35px 45px;
+            }
+
+            code {
+                display: block;
+
+                width: 420px;
+                height: 312px;
+
+                background: transparent !important;
+                color: #dbeafe;
+
+                font-family: "JetBrains Mono", monospace;
+                font-size: 16px;
+                line-height: 1.3;
+            }
+
+            .copy-regular {
+                position: absolute;
+                bottom: 20px;
+                right: 20px;
+
+                color: white;
+                
+                font-size: 21px;
+
+                cursor: pointer;
+            }
+            .copy-solid {
+                display: none;
+
+                position: absolute;
+                bottom: 20px;
+                right: 20px;
+
+                color: white;
+                
+                font-size: 21px;
+
+                cursor: pointer;
+            }
+            .fa-code-compare {
+                position: absolute;
+                top: 20px;
+                right: 20px;
+
+                color: white;
+                
+                font-size: 21px;
+                
+                cursor: pointer;
+            }
+            .popup {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                visibility: hidden;
+                opacity: 0;
+
+                position: absolute; 
+                bottom: -20px;
+                right: 2px;
+
+                width: 60px;
+                height: 30px;
+
+                background-color: grey;
+                color: white;
+
+                font-size: 12px;
+                font-weight: 550;
+
+                border-radius: 5px;
+
+
+                transition:
+                    opacity 0.3s ease,
+                    visibility 0s linear 0.3s;
+
+            }
+
+            .popup.clicked {
+                opacity: 1;
+                visibility: visible;
+                transition:
+                    opacity 0.3s ease,
+                    visibility 0s linear 0s;
+            }
+        }
+    }
+}
+
+.code-wrapper:hover {
+    box-shadow:
+        0 20px 50px rgba(0,0,0,0.45),
+        0 0 30px rgba(77,166,255,0.15);
+}
+
+
+
+.bubble {
+    position: fixed;
+    bottom: 0;
+
+    width: 12px;
+    height: 12px;
+
+    background-color: rgba(173, 216, 230, 0.7);
+    border-radius: 50%;
+    
+    filter: blur(1px);
+
+    pointer-events: none;
+}

@@ -1,0 +1,10 @@
+.string {
+    color: #f1fa8c;
+}
+.number {
+    color: #bd93f9;
+}
+.keyword {
+    color: #ff79c6;
+    font-weight: bold;
+}
