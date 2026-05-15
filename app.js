@@ -18,22 +18,54 @@ let isScrolled2 = false;
 
 // code examples
 const codes = [
-`// include standard library
-include std
+`define greet(name)
+    print("Hello, " + name + "!")
 
-// prints hello world with newline
-std::writeln('Hello, world!')
+greet("World")  // Hello, World!`
+,
+`// inline if statements
 
-// define factorial function
-define factor(n)
-    if n == 1 or n == 0
-        return 1
-    return n * factor(n - 1)
+score = 87
 
-// call the function
-var result = factor(5)
-std::writeln(result) // output: 120`,
+if score >= 90 then grade = "A"
+else if score >= 80 then grade = "B"
+else grade = "C"
 
+print(grade)`
+,
+`player = {
+    name = "Huseyn",
+    hp = 100,
+    speed = 5
+}
+
+player.hp -= 30
+
+print(
+    player.name +
+    " has " +
+    string(player.hp) +
+    " hp"
+)`
+,
+`define apply(f, x) f(x)
+
+print(apply(define(x) x * x, 8))  // 64`
+,
+`define make_enemy(name, hp)
+    e = {name = name, hp = hp}
+
+    e.hit = define(self, dmg)
+        self.hp -= dmg
+        if self.hp <= 0
+            print(self.name + " is dead")
+
+    return e
+
+goblin = make_enemy("Goblin", 30)
+goblin->hit(10)
+goblin->hit(25)`
+,
 `define calc(a, b, op)
     if op == "+"
         return a + b
@@ -46,24 +78,29 @@ std::writeln(result) // output: 120`,
 
 print(calc(10, 5, "*"))`
 ,
-`a = 1, b = a, i = 0  // set variable
-max = 1000
-
-while i < max
-    i += 1
-    print(i)
-`,
-
 `define double(x)
     return x * 2
 
 doubled = [1, 2, 3, 4, 5]->map(double)
 
 i = 0
-while (doubled != null) == true and i < list->len()
+while i < list->len()
     print(doubled[i])
     i += 1
 `
+,
+`// chain and write code beautifully
+
+sum = (
+    [1, 2, 3]
+    ->map(define(x) x * x)  // [1, 4, 9]
+    ->filter(define(x) x % 2 != 0)  // [1, 9]
+    ->reduce(define(x, y) x + y, 0)
+)
+
+print(sum)  // 10
+`
+,
 ];
 
 
@@ -78,7 +115,7 @@ function spawnBubbles() {
         document.body.appendChild(b);
 
 
-        let startX
+        let startX;
         if(i < 4) {
             startX = Math.random() * window.innerWidth * 0.2;
         } else {
