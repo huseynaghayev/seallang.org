@@ -7,18 +7,33 @@ const popupText = document.querySelector(".popup");
 const sound = document.getElementById("diveSound");
 
 
-// for highlighting the code examples
-codeText.innerHTML = highlight(codeText.textContent);
-
 //for bubble effect
 let triggered = false;
+
 
 // for scrolling effect
 let isScrolled1 = false;
 let isScrolled2 = false;
 
+
 // code examples
 const codes = [
+`// include standard library
+include std
+
+// prints hello world with newline
+std::writeln('Hello, world!')
+
+// define factorial function
+define factor(n)
+    if n == 1 or n == 0
+        return 1
+    return n * factor(n - 1)
+
+// call the function
+var result = factor(5)
+std::writeln(result) // output: 120`,
+
 `define calc(a, b, op)
     if op == "+"
         return a + b
@@ -37,8 +52,8 @@ max = 1000
 while i < max
     i += 1
     print(i)
-`
-,
+`,
+
 `define double(x)
     return x * 2
 
@@ -49,9 +64,11 @@ while (doubled != null) == true and i < list->len()
     print(doubled[i])
     i += 1
 `
-,
 ];
 
+
+// for highlighting the code examples
+codeText.innerHTML = highlight(codes[0]);
 
 // spawn bubbles logic function
 function spawnBubbles() {
@@ -75,7 +92,7 @@ function spawnBubbles() {
 
         b.animate([
             {transform: "translate(0, 0) scale(0.5)", opacity: 1},
-            {transform: `translate(${endX - startX}px, -700px) scale(1.2)`,
+            {transform: `translate(${endX - startX}px, -700px) scale(0.8)`,
             opacity: 0}
         ], {
             duration,
@@ -130,6 +147,8 @@ window.addEventListener("load", () => {
 function renderCode(code) {
     codeText.innerHTML = highlight(code);
 }
+
+
 copyIconRe.addEventListener("click", () => {
     copyIconRe.style.display = "none";
     copyIconSo.style.display = "flex";
@@ -140,11 +159,11 @@ copyIconRe.addEventListener("click", () => {
     }, 1500);
 });
 
-let s=0;
+let s=1;
 changeCodeIcon.addEventListener("click", () => {
     copyIconSo.style.display = "none";
     copyIconRe.style.display = "flex";
-    if(s >= codes.length) s = 0;
+    if(s >= codes.length) s = 1;
     renderCode(codes[s]);
     s++;
 });
