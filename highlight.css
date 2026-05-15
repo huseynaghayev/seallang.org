@@ -8,3 +8,9 @@
     color: #ff79c6;
     font-weight: bold;
 }
+.literal {
+    color: #ff8000;
+}
+.comment {
+    color: #fafafa80;
+}

@@ -19,10 +19,7 @@ let isScrolled2 = false;
 
 // code examples
 const codes = [
-    `// include standard library
-include std
-
-define calc(a, b, op)
+`define calc(a, b, op)
     if op == "+"
         return a + b
     if op == "-"
@@ -32,26 +29,27 @@ define calc(a, b, op)
     if op == "/"
         return a / b
 
-std::writeln(calc(10, 5, "*"))`,
-    `// include standard library
-include std
+print(calc(10, 5, "*"))`
+,
+`a = 1, b = a, i = 0  // set variable
+max = 1000
 
-i = 0  // set variable
-
-while i < 5
-    std::writeln(i)
-    i = i + 1`,
-    `include std // include standard library
-
-var arr = [1, 2, 3, 4, 5]  // array
-
-define double(x)
+while i < max
+    i += 1
+    print(i)
+`
+,
+`define double(x)
     return x * 2
 
-var i = 0
-while i < 5
-    std::writeln(double(arr[i]))
-    i = i + 1`
+doubled = [1, 2, 3, 4, 5]->map(double)
+
+i = 0
+while (doubled != null) == true and i < list->len()
+    print(doubled[i])
+    i += 1
+`
+,
 ];
 
 
@@ -150,7 +148,3 @@ changeCodeIcon.addEventListener("click", () => {
     renderCode(codes[s]);
     s++;
 });
-
-
-
-
