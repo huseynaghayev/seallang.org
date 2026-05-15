@@ -18,7 +18,9 @@ let isScrolled2 = false;
 
 // code examples
 const codes = [
-`define greet(name)
+`// Classic greeting World program
+
+define greet(name)
     print("Hello, " + name + "!")
 
 greet("World")  // Hello, World!`
@@ -48,7 +50,9 @@ print(
     " hp"
 )`
 ,
-`define apply(f, x) f(x)
+`// functions are first-class citizens
+
+define apply(f, x) f(x)
 
 print(apply(define(x) x * x, 8))  // 64`
 ,
