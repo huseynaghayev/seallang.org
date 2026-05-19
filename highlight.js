@@ -5,47 +5,68 @@ function escapeHtml(str) {
         .replaceAll(">", "&gt;");
 }
 
+const keywords = new Set([
+    "if", "then", "else",
+    "while", "do", "for", "in",
+    "skip", "stop",
+    "define", "return", "include",
+    "and", "or", "not"
+]);
+
+const literals = new Set([
+    "null", "true", "false"
+]);
+
+const decimalRegex = /\b\d+\b/
+const hexRegex = /\b0[xX][0-9a-fA-F]+\b/
+const octRegex = /\b0[oO][0-7]+\b/
+const binRegex = /\b0[bB][01]+\b/
+const floatRegex = /\b\d+\.\d+|\b\.\d+\b/
+const stringRegex = /'[^']*'|"[^"]*"/;
+const commentRegex = /\/\/.*$|\/\*.*\*/
+const wordRegex = /[a-zA-Z]+/
+const idRegex = null; // to be implemented
+
+const tokenRegex = new RegExp(
+    [
+        decimalRegex.source,
+        hexRegex.source,
+        octRegex.source,
+        binRegex.source,
+        floatRegex.source,
+        stringRegex.source,
+        commentRegex.source,
+        wordRegex.source,
+        //idRegex,
+    ].join("|"),
+    "gm"
+);
+
 window.highlight = (code) => {
     code = escapeHtml(code);
 
-    // strings
-    code = code.replace(/'[^']*'|"[^"]*"/g, m =>
-        `<span class="string">${m}</span>`
-    );
+    return code.replace(tokenRegex, token => {
 
-    const keywords = [
-        "if", "then", "else",
-        "while", "do", "for", "in",
-        "skip", "stop",
-        "define", "return", "include",
-        "and", "or", "not"
-    ];
+        if (token.startsWith("//") || token.startsWith("/*")) {
+            return `<span class="comment">${token}</span>`;
+        }
 
-    const literals = [
-        "null", "true", "false"
-    ];
+        if (token.startsWith("\"") || token.startsWith("\'")) {
+            return `<span class="string">${token}</span>`;
+        }
 
-    // keywords
-    keywords.forEach(kw => {
-        const regex = new RegExp(`\\b${kw}\\b`, "g");
-        code = code.replace(regex, `<span class="keyword">${kw}</span>`);
+        if (literals.has(token)) {
+            return `<span class="literal">${token}</span>`;
+        }
+
+        if (keywords.has(token)) {
+            return `<span class="keyword">${token}</span>`;
+        }
+        
+        if (/\d/.test(token)) {
+            return `<span class="number">${token}</span>`;
+        }
+
+        return token;
     });
-
-    // literals
-    literals.forEach(lit => {
-        const regex = new RegExp(`\\b${lit}\\b`, "g");
-        code = code.replace(regex, `<span class="literal">${lit}</span>`);
-    });
-
-    // numbers
-    code = code.replace(/\b\d+\b|\b\d+\.\d+\b|\b\.\d+\b|\b0[xX][0-9a-fA-F]+\b|\b0o[0-7]+\b|\b0b[01]+\b/g, m =>
-        `<span class="number">${m}</span>`
-    );
-
-    // comments
-    code = code.replace(/\/\/.*$|\/\*.*\*\//g, m =>
-        `<span class="comment">${m}</span>`
-    );
-
-    return code;
 };
