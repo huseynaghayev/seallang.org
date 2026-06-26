@@ -208,6 +208,8 @@ main {
                                     font-weight: 550;
                                     font-size: 19px;
 
+                                    transition: opacity 0.15s ease-in;
+
                                     cursor: pointer;
                                 }
                                     .download-btn:hover {
@@ -231,6 +233,8 @@ main {
                                     font-weight: 550;
                                     font-size: 19px;
                                     
+                                    transition: background-color 0.15s ease-in;
+
                                     cursor: pointer;
                                 }
                                     .view-btn:hover {
@@ -238,6 +242,8 @@ main {
                                     }
 
                 .code-wrapper {
+                    position: relative;
+
                     display: flex;
                     align-items: center;
                 
@@ -249,12 +255,14 @@ main {
                     box-shadow:
                         0 10px 40px rgba(0,0,0,0.35),
                         inset 0 1px 0 rgba(255,255,255,0.05);
-                    transition: 0.35s ease;
+
+                    transition: box-shadow 0.1s ease-in;
                 }
 
                     .code-wrapper:hover {
                         box-shadow:
                             0 20px 50px rgba(0,0,0,0.45),
+                            inset 0 1px 0 rgba(255,255,255,0.05),
                             0 0 30px rgba(77,166,255,0.15);
                     }
                     
